@@ -26,3 +26,13 @@ Dec 6th, 2022 6:07pm - Able to show date and description.
 ## Credit and Collaborations
 
 Thank you to the TA's at Code Fellows that have helped me.
+
+## Name of feature: City-explorer-api
+
+Estimate of time needed to complete: 3 hours
+
+Start time: 3pm
+
+Finish time: 8:45pm
+
+Actual time needed to complete: 5 hours and 45 minutes.
