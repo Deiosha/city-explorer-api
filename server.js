@@ -9,6 +9,8 @@ const db = require('./data/weather.json');
 const app = express();
 app.use(cors());
 
+
+
 app.get('/weather', (request, response, next) => {
   const { searchQuery } = request.query;
   // console.log(request.query, db);
@@ -34,13 +36,14 @@ app.get('/weather', (request, response, next) => {
 
 class Forecast {
   constructor(day) {
+    console.log(day);
     this.date = day.datetime;
     this.description = day.weather.description;
   }
 }
 
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT||3002;
 
 app.use('*', (request, response, next) => {
   response.status(404).send('invalid request');
