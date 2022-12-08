@@ -32,10 +32,11 @@ app.get('/weather', (request, response, next) => {
 
 });
 
-function Forecast(day) {
-  this.date = day.datetime;
-  this.description = day.weather.description;
-
+class Forecast {
+  constructor(day) {
+    this.date = day.datetime;
+    this.description = day.weather.description;
+  }
 }
 
 
