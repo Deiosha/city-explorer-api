@@ -39,7 +39,7 @@ app.get('/weather', (request, response, next) => {
   }
 });
 
-app.get('/movie', getMovie)
+app.get('/movies', getMovie)
 async function getMovie(request, response) {
   console.log('movie function');
   try {
@@ -47,8 +47,9 @@ async function getMovie(request, response) {
     let url = `https://api.themoviedb.org/3/search/movie?api_key=${movieKey}&query=${movieQuery}`;
     console.log(url);
     let cityMovie = await axios.get(url);
+    console.log(cityMovie.data.results);
     let movieArray = cityMovie.data.results.map(movie => new Movie(movie));
-    console.log(movieArray);
+    // console.log(movieArray);
     response.send(movieArray);
   } catch (error) {
     response.send(error.message);
