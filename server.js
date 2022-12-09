@@ -80,6 +80,8 @@ class Forecast {
 class Movie {
   constructor(movieObj) {
     this.title = movieObj.title;
+    this.overview = movieObj.overview;
+    this.popularity= movieObj.popularity;
     // this.overview = overview;
   }
 }
