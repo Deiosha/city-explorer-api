@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
-const db = require('./data/weather.json');
+// const db = require('./data/weather.json'); WEATHER
 const movieKey = process.env.MOVIE_API_KEY;
 // const Movie = require('./Movie.js');
 const axios = require('axios');
@@ -16,28 +16,6 @@ const app = express();
 app.use(cors());
 
 
-
-app.get('/weather', (request, response, next) => {
-  const { searchQuery } = request.query;
-  // console.log(request.query, db);
-  if (!request.query.searchQuery) {
-    next('Please enter location');
-  } else {
-    let foundCity = db.find(city => city.city_name.toLowerCase === searchQuery.toLowerCase);
-    // console.log(foundCity);
-    let dayArray = foundCity.data;
-    let forecastArray = dayArray.map(day => new Forecast(day));
-    console.log(forecastArray);
-
-    // for (let i = 0; i < db.length; i++){
-    //   if (request.query.lon === db[i].lon){
-    //     weather = db[i].lon;
-    //   }
-    // }
-    response.send(forecastArray);
-
-  }
-});
 
 app.get('/movie', getMovie)
 async function getMovie(request, response) {
@@ -55,28 +33,8 @@ async function getMovie(request, response) {
   }
 };
 
-//   else {
-//     let movieArray = cityMovie.data.map(movie => new Movie(movie.title, movie.overview));
-//     response.send(movieArray);
-//   }
-//   let selectMovie = cityMovie.data.map(dayMovie => {
-//     return new Movie(dayMovie);
-//   });
-
-//   response.send(selectMovie);
-// });
 
 
-
-
-
-class Forecast {
-  constructor(day) {
-    console.log(day);
-    this.date = day.datetime;
-    this.description = day.weather.description;
-  }
-}
 class Movie {
   constructor(movieObj) {
     this.title = movieObj.title;
